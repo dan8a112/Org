@@ -1,15 +1,18 @@
 import { useState } from 'react'
-import './CampoTexto.css'
+import './Campo.css'
 
-const CampoTexto = (props) => {
+const Campo = (props) => {
+
+    const {type="text"} = props; //Con esta tecnica podemos darle un valor por defecto en caso que no este definido
 
     const manejarCambio = (e) => {
         props.actualizarValor(e.target.value);
     }
 
-    return <div className='campo-texto'>
+    return <div className={`campo campo-${type}`}>
         <label>{props.titulo}</label>
         <input 
+            type={type}
             placeholder={props.placeholder} 
             required={props.required} 
             value={props.valor}
@@ -18,4 +21,4 @@ const CampoTexto = (props) => {
     </div>
 }
 
-export default CampoTexto
+export default Campo
